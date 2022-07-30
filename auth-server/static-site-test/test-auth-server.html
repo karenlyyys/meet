@@ -51,7 +51,7 @@
         const resultElement = document.getElementById("result");
         const resultLink = document.getElementById("authURL");
         // Replace this with your own endpoint
-        const getAuthURL = "https://71m8aiz626.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
+        const getAuthURL = "https://7lljx5gbae.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
   
         getCodeElement.onclick = function () {
           fetch(getAuthURL)
@@ -74,7 +74,7 @@
       const getAccessToken = document.getElementById("getToken");
       const accessTokenElement = document.getElementById("accessToken");
       const getToken =
-        "https://71m8aiz626.execute-api.eu-central-1.amazonaws.com/dev/api/token";
+        "https://7lljx5gbae.execute-api.eu-central-1.amazonaws.com/dev/api/token/";
 
       getAccessToken.onclick = function () {
         let code = codeValue.value;
@@ -97,7 +97,7 @@
       // -- STEP 3
       const getEvents = document.getElementById("getEvents");
       const events = document.getElementById("events");
-      const getCalendarEvents = "YOUR_LAMBDA_GET_CALENDAR_EVENTS_ENDPOINT";
+      const getCalendarEvents = "https://7lljx5gbae.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
       getEvents.onclick = function () {
         const { access_token } = JSON.parse(accessTokenElement.innerText);
