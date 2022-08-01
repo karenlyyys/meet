@@ -100,7 +100,7 @@
       const getCalendarEvents = "https://7lljx5gbae.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
       getEvents.onclick = function () {
-        const { access_token } = JSON.parse(accessTokenElement.innerText);
+        const { access_token } = JSON.parse(document.getElementById("accessToken").innerText);
         const eventRequest = getCalendarEvents + "/" + access_token;
         fetch(eventRequest)
           .then(function (response) {
@@ -111,8 +111,6 @@
           });
       };
       // -- END OF STEP 3
-
-  
 
       </script>
     </body>
