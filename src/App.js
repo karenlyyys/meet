@@ -1,15 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import EventList from './EventList';
+import CitySearch from './CitySearch';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-     Welcome to my Meet App
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+         <CitySearch />
+         <EventList />
+      </div>
+    );
+  }
 }
 
 export default App;
