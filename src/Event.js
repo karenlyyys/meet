@@ -13,7 +13,11 @@ class Event extends Component {
       <>
         <div className="event">
           <h1 className="event-summary-title">{event.summary}</h1>
-          <p className="event-info">
+          <p className="event-date">
+            {event.start.dateTime}
+          </p>
+          <p className="event-location">
+            {event.location}
           </p>
           {this.state.show && (
             <>

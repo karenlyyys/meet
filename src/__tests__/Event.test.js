@@ -6,7 +6,7 @@ import { mockData } from '../mock-data';
 describe('<Event /> component', () => {
   let event, EventWrapper;
   beforeEach(() => {
-    event = mockData[0];
+    event = mockData[0].items[0];
     EventWrapper = shallow(<Event event={event} />);
   });
 
@@ -15,7 +15,7 @@ describe('<Event /> component', () => {
   });
 
   test('render info in event item', () => {
-    expect(EventWrapper.find('.event-info')).toHaveLength(1);
+    expect(EventWrapper.find('.event-date')).toHaveLength(1);
   });
 
   test('render show details button in event item', () => {
@@ -29,13 +29,12 @@ describe('<Event /> component', () => {
   });
 
   test('render event info correctly', () => {
-    expect(EventWrapper.find('.event-info').text()).toContain(
+    expect(EventWrapper.find('.event-date').text()).toContain(
       '2020-05-19'
     );
-    expect(EventWrapper.find('.event-info').text()).toContain(
-      'Europe/Berlin'
+    expect(EventWrapper.find('.event-location').text()).toContain(
+      'London'
     );
-    expect(EventWrapper.find('.event-info').text()).toContain(event.location);
   });
 
   test('render event collapsed by default', () => {
