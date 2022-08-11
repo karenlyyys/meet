@@ -61,3 +61,4 @@ test("selecting a suggestion should change query state", () => {
   CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
   expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
 });
+});
