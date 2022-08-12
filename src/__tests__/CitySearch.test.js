@@ -4,20 +4,29 @@ import CitySearch from '../CitySearch';
 import { mockData } from '../mock-data';
 import { extractLocations } from '../api';
 
+// describe('<CitySearch /> component', () => {
+//   let locations, CitySearchWrapper;
+//   beforeAll(() => {
+//     locations = extractLocations(mockData); 
+//     CitySearchWrapper = shallow(
+//     <CitySearch locations={locations} updateEvents={() => {}} />
+//     );
+//   }); 
+ 
+//   test('render text input', () => {
+//   expect(CitySearchWrapper.find('.city')).toHaveLength(1);
+//   });
+
+
 describe('<CitySearch /> component', () => {
   let locations, CitySearchWrapper;
   beforeAll(() => {
     locations = extractLocations(mockData);
-    //CitySearchWrapper = shallow(<CitySearch locations={locations} />);
+    CitySearchWrapper = shallow(<CitySearch />);
   });
 
-  test('render text input', () => {
+  test('render text input', () => {;
     expect(CitySearchWrapper.find('.city')).toHaveLength(1);
-  });
-
-  test('renders a list of suggestions', () => {
-  expect(CitySearchWrapper.find('.suggestions')).toHaveLength(1);
-});
 
 test('renders text input correctly', () => {
   const query = CitySearchWrapper.state('query');
@@ -61,4 +70,21 @@ test("selecting a suggestion should change query state", () => {
   CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
   expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
 });
+
+test("selecting CitySearch input reveals the suggestions list", () => {
+  CitySearchWrapper.find('.city').simulate('focus');
+  expect(CitySearchWrapper.state('showSuggestions')).toBe(true);
+  expect(CitySearchWrapper.find('.suggestions').prop('style')).not.toEqual({ display: 'none' });
 });
+
+test("selecting a suggestion should hide the suggestions list", () => {
+  CitySearchWrapper.setState({
+      query: 'Berlin',
+      showSuggestions: undefined
+  });
+  CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
+  expect(CitySearchWrapper.state('showSuggestions')).toBe(false);
+  expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
+});
+});
+  
