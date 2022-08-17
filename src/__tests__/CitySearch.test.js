@@ -4,25 +4,11 @@ import CitySearch from '../CitySearch';
 import { mockData } from '../mock-data';
 import { extractLocations } from '../api';
 
-// describe('<CitySearch /> component', () => {
-//   let locations, CitySearchWrapper;
-//   beforeAll(() => {
-//     locations = extractLocations(mockData); 
-//     CitySearchWrapper = shallow(
-//     <CitySearch locations={locations} updateEvents={() => {}} />
-//     );
-//   }); 
- 
-//   test('render text input', () => {
-//   expect(CitySearchWrapper.find('.city')).toHaveLength(1);
-//   });
-
-
 describe('<CitySearch /> component', () => {
   let locations, CitySearchWrapper;
   beforeAll(() => {
     locations = extractLocations(mockData);
-    CitySearchWrapper = shallow(<CitySearch />);
+    CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
   });
 
   test('render text input', () => {;
@@ -87,4 +73,4 @@ test("selecting a suggestion should hide the suggestions list", () => {
   expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
 });
 });
-  
+});

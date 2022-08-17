@@ -33,3 +33,5 @@ class ErrorAlert extends Alert {
       this.class = 'error-alert';
     }
   }
+
+  export { ErrorAlert };
