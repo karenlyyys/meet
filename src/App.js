@@ -5,23 +5,26 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
+import { mockData } from './mock-data';
 
 class App extends Component {
   state = {
-    events: [],
+    events: mockData[0].items,
     locations: [],
     locationSelected: 'all',
-    numberOfEvents: 12,
+    numberOfEvents: 32,
   }
 
-  componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  }
+ 
+
+componentDidMount() {
+// this.mounted = true;
+// getEvents().then((events) => {
+// if (this.mounted) {
+// this.setState({ events, locations: extractLocations(events) });
+// }
+// });
+}
 
   componentWillUnmount(){
     this.mounted = false;

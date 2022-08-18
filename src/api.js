@@ -91,7 +91,7 @@ export const getEvents = async () => {
 
 
   const token = await getAccessToken();
-
+  
   if (token) {
     removeQuery();
     const url = 'https://7lljx5gbae.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url' + '/' + token;
