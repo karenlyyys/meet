@@ -29,14 +29,6 @@ componentDidMount() {
   }
 
   updateEvents = (location, eventCount) => {
-  //   if (eventCount === undefined) {
-  //     eventCount = this.state.numberOfEvents;
-  // } else(
-  //     this.setState({ numberOfEvents: eventCount })
-  // )
-  // if (location === undefined) {
-  //     location = this.state.locationSelected;
-  // }
     getEvents().then((events) => {
       console.log(events)
       // const locationEvents = (location === 'all') ?
@@ -82,7 +74,7 @@ changeNumOfEvents = async (e) => {
   render() {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} events={this.state.events} />
          <NumberOfEvents changeNumOfEvents={this.changeNumOfEvents} NumberOfEvents={this.state.numberOfEvents} />
          <EventList events={this.state.events} />
       </div>

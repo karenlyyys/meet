@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { extractLocations } from './api';
 
 class CitySearch extends Component {
   state = {
     query: '',
-    suggestions: [],
+    suggestions: extractLocations(this.props.events),
     showSuggestions: undefined
   }
 
@@ -29,6 +30,7 @@ this.props.updateEvents(suggestion);
 
 
   render() {
+    console.log(this.state.suggestions)
     return (
       <div className="CitySearch">
     <input
@@ -37,13 +39,16 @@ this.props.updateEvents(suggestion);
     value={this.state.query}
     onChange={this.handleInputChanged}
     onFocus={() => { this.setState({ showSuggestions: true }) }}
-  /> <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
+  /> 
+  <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
          {this.state.suggestions.map((suggestion) => (
     <li key={suggestion}
     onClick={() => this.handleItemClicked(suggestion)}>{suggestion}</li>
   ))}
   <li onClick={() => this.handleItemClicked("all")}>
+  
     <b>See all cities</b>
+    
   </li>
       </ul>
       </div>
