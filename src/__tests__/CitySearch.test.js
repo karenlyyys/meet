@@ -12,6 +12,9 @@ describe('<CitySearch /> component', () => {
     CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
   });
 
+
+   //USER SHOULD SEE LIST OF SUGGESTIONS DURING SEARCH
+
   test('render text input', () => {
     expect(CitySearchWrapper.find('.city')).toHaveLength(1);
   });
@@ -50,6 +53,9 @@ describe('<CitySearch /> component', () => {
   });
   expect(CitySearchWrapper.state("suggestions")).toEqual(filteredLocations);
   });
+
+
+  //USER CAN SELECT CITY FROM LIST OF SUGGESTIONS
 
   test("selecting a suggestion should change query state", () => {
     CitySearchWrapper.setState({
