@@ -29,7 +29,7 @@ render() {
 class ErrorAlert extends Alert {
     constructor(props) {
       super(props);
-      this.color = '#red';
+      this.color = 'red';
       this.class = 'error-alert';
     }
   }

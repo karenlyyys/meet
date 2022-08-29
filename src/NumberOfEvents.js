@@ -28,17 +28,16 @@ constructor() {
     super();
     this.state = {
         renderNumber: 32,
-        errorText: ''
     }
 }
 
 render() {
     const { renderNumber } = this.state;
-
+   
     return (
         <div className="number-of-events">
             <p className="input-label">Number of Events</p>
-            <ErrorAlert text={this.state.errorText} />
+            <ErrorAlert text={this.props.infoText} />
             <input id="render-number" type="number" className="rendernumber" value={this.props.NumberOfEvents} onChange={(e) => this.props.changeNumOfEvents(e)}></input>
         </div>
     );
