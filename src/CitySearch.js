@@ -33,6 +33,7 @@ this.props.updateEvents(suggestion);
     console.log(this.state.suggestions)
     return (
       <div className="CitySearch">
+        <a>See all cities</a>
     <input
     type="text"
     className="city"
@@ -46,8 +47,7 @@ this.props.updateEvents(suggestion);
     onClick={() => this.handleItemClicked(suggestion)}>{suggestion}</li>
   ))}
   <li onClick={() => this.handleItemClicked("all")}>
-  
-    <b>See all cities</b>
+
     
   </li>
       </ul>
