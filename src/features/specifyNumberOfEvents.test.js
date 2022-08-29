@@ -4,15 +4,13 @@ import App from '../App';
 import React from 'react';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
-
 defineFeature(feature, (test) => {
-    test('user hasn’t specified a number, 32 is the default number.', ({
+    test('user hasn’t specified a number, 32 is the default number', ({
       given,
       when,
       then
     }) => {
-      given(
-        'the user searched for an event',
+      given('the user searched for an event',
         () => {}
       );
   
@@ -27,7 +25,7 @@ defineFeature(feature, (test) => {
       });
     });
   
-    test('User can change the number of events they want to see.', ({
+    test('User can change the number of events they want to see', ({
       given,
       and,
       when,
@@ -38,8 +36,7 @@ defineFeature(feature, (test) => {
         AppWrapper = mount(<App />);
       });
   
-      when(
-        'they user wants to change the search number',
+      when('they user wants to change the search number',
         () => {
           AppWrapper.update();
           let NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');

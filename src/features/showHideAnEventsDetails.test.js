@@ -2,18 +2,18 @@ import { loadFeature, defineFeature } from 'jest-cucumber';
 import React from 'react';
 import App from '../App';
 import { mount, shallow } from 'enzyme';
+import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, (test) => {
-    test('An event element is collapsed by default.', ({ given, when, then }) => {
+    test('An event element is collapsed by default', ({ given, when, then }) => {
       let AppWrapper;
       given('the main page is open', () => {
         AppWrapper = mount(<App />);
       });
   
-      when(
-        'the user views the city)',
+      when('the user views the city',
         () => {
           AppWrapper.update();
           expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
@@ -30,7 +30,7 @@ defineFeature(feature, (test) => {
       });
     });
 
-      test('User can expand an event to see its details.', ({ given, when, then }) => {
+      test('User can expand an event to see its details', ({ given, when, then }) => {
         let EventWrapper;
         given('the user clicked on the event button/page', () => {
           EventWrapper = shallow(<Event event={mockData[0]} />);
@@ -57,7 +57,7 @@ defineFeature(feature, (test) => {
         );
       });
 
-      test('User can collapse an event to hide its details.', ({
+      test('User can collapse an event to hide its details', ({
         given,
         when,
         then
