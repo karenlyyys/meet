@@ -7,8 +7,9 @@ import { mockData } from '../mock-data';
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, (test) => {
+  let AppWrapper;
     test('An event element is collapsed by default', ({ given, when, then }) => {
-      let AppWrapper;
+     
       given('the main page is open', () => {
         AppWrapper = mount(<App />);
       });
@@ -32,7 +33,7 @@ defineFeature(feature, (test) => {
 
       test('User can expand an event to see its details', ({ given, when, then }) => {
         let EventWrapper;
-        given('the user clicked on the event button/page', () => {
+        given('the user clicked on the event button', () => {
           EventWrapper = shallow(<Event event={mockData[0]} />);
           expect(EventWrapper.state('show')).toBe(false);
           expect(EventWrapper.find('.event .event-showDetails-btn')).toHaveLength(
@@ -57,15 +58,9 @@ defineFeature(feature, (test) => {
         );
       });
 
-      test('User can collapse an event to hide its details', ({
-        given,
-        when,
-        then
-      }) => {
+      test('User can collapse an event to hide its details', ({given, when, then}) => {
         let EventWrapper;
-        given(
-          'the event details are open',
-          () => {
+        given('the event details are open',() => {
             EventWrapper = shallow(<Event event={mockData[0]} />);
             EventWrapper.setState({ show: true });
             expect(EventWrapper.state('show')).toBe(true);
@@ -75,6 +70,7 @@ defineFeature(feature, (test) => {
             expect(EventWrapper.find('.event .event-description')).toHaveLength(1);
           }
         );
+
     
         when('the user clicks on the event again', () => {
           EventWrapper.find('.event-hideDetails-btn').simulate('click');

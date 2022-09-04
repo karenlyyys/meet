@@ -9,19 +9,37 @@ import { extractLocations } from '../api';
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
 defineFeature(feature, test => {
-    test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-      given('user hasn’t searched for any city', () => {
-      });
-      let AppWrapper;
-      when('the user opens the app', () => {
-        AppWrapper = mount(<App/>);
-      });
+    // test('When user hasn’t searched for a city, show upcoming events from all cities', ({ given, when, then }) => {
+    //   let AppWrapper;
+    //   given('user hasn’t searched for any city', () => {
+    //   });
+    //   when('the user opens the app', () => {
+    //     AppWrapper = mount(<App/>);
+    //   });
   
-      then('the user should see the list of upcoming events.', () => {
-        AppWrapper.update();
-            expect(AppWrapper.find('.event')).toHaveLength(mockData[0].items.length);
+    //   then('the user should see the list of upcoming events.', () => {
+
+    //   });
+
+    test('When user hasn’t searched for a city, show upcoming events from all cities', ({ given, when, then }) => {
+      given('user hasn’t searched for any city', () => {
+
       });
-    });
+
+      when('the user opens the app', () => {
+
+      });
+
+      then('the user should see the list of upcoming events', () => {
+
+      });
+  });
+
+    
+    //     AppWrapper.update();
+    //         expect(AppWrapper.find('.event')).toHaveLength(mockData[0].items.length);
+    //   });
+    // });
   
     test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
         let CitySearchWrapper;

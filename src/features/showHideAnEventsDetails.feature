@@ -6,7 +6,7 @@ When the user views the city
 Then the current events will be collapsed from the viewers end
 
 Scenario: User can expand an event to see its details
-Given the user clicked on the event button/page
+Given the user clicked on the event button
 When the user clicks on an event
 Then more details about the event will display
 
