@@ -8,6 +8,10 @@ import './nprogress.css';
 import { mockData } from './mock-data';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.changeNumOfEvents += this.changeNumOfEvents.bind(this)
+  }
   state = {
     events: mockData[0].items,
     locations: [],
