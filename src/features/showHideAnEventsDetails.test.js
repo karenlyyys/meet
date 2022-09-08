@@ -14,19 +14,18 @@ defineFeature(feature, (test) => {
         AppWrapper = mount(<App />);
       });
   
-      when('the user views the city',
-        () => {
+      when('the user views the city', () => {
           AppWrapper.update();
-          expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
+          expect(AppWrapper.find('.event')).toHaveLength(250);
         }
       );
-  
+      
       then('the current events will be collapsed from the viewers end', () => {
         AppWrapper.update();
         let EventWrapper = AppWrapper.find(Event);
         EventWrapper.forEach((event) => expect(event.state('show')).toBe(false));
-        expect(EventWrapper.find('.event .event-showDetails-btn')).toHaveLength(
-          mockData.length
+        expect(EventWrapper.find('.event-showDetails-btn')).toHaveLength(
+          0
         );
       });
     });
@@ -34,26 +33,25 @@ defineFeature(feature, (test) => {
       test('User can expand an event to see its details', ({ given, when, then }) => {
         let EventWrapper;
         given('the user clicked on the event button', () => {
-          EventWrapper = shallow(<Event event={mockData[0]} />);
+          const event = mockData[0].items[0];
+          const EventWrapper = shallow(<Event event={event} />);
           expect(EventWrapper.state('show')).toBe(false);
-          expect(EventWrapper.find('.event .event-showDetails-btn')).toHaveLength(
+          expect(EventWrapper.find('.event-showDetails-btn')).toHaveLength(
             1
           );
-          expect(EventWrapper.find('.event .event-description')).toHaveLength(0);
+          expect(EventWrapper.find('.event-description')).toHaveLength(0);
         });
     
         when('the user clicks on an event', () => {
           EventWrapper.find('.event-showDetails-btn').simulate('click');
         });
     
-        then(
-          'more details about the event will display',
-          () => {
+        then('more details about the event will display', () => {
             expect(EventWrapper.state('show')).toBe(true);
-            expect(EventWrapper.find('.event .event-hideDetails-btn')).toHaveLength(
+            expect(EventWrapper.find('.event-hideDetails-btn')).toHaveLength(
               1
             );
-            expect(EventWrapper.find('.event .event-description')).toHaveLength(1);
+            expect(EventWrapper.find('.event-description')).toHaveLength(1);
           }
         );
       });
@@ -64,10 +62,10 @@ defineFeature(feature, (test) => {
             EventWrapper = shallow(<Event event={mockData[0]} />);
             EventWrapper.setState({ show: true });
             expect(EventWrapper.state('show')).toBe(true);
-            expect(EventWrapper.find('.event .event-hideDetails-btn')).toHaveLength(
+            expect(EventWrapper.find('.event-hideDetails-btn')).toHaveLength(
               1
             );
-            expect(EventWrapper.find('.event .event-description')).toHaveLength(1);
+            expect(EventWrapper.find('.event-description')).toHaveLength(1);
           }
         );
 
@@ -76,14 +74,12 @@ defineFeature(feature, (test) => {
           EventWrapper.find('.event-hideDetails-btn').simulate('click');
         });
     
-        then(
-          'the details about the event will close',
-          () => {
+        then('the details about the event will close', () => {
             expect(EventWrapper.state('show')).toBe(false);
-            expect(EventWrapper.find('.event .event-showDetails-btn')).toHaveLength(
+            expect(EventWrapper.find('.event-showDetails-btn')).toHaveLength(
               1
             );
-            expect(EventWrapper.find('.event .event-description')).toHaveLength(0);
+            expect(EventWrapper.find('.event-description')).toHaveLength(0);
           }
         );
       });
