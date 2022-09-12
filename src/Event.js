@@ -39,14 +39,14 @@ class Event extends Component {
               className="event-showDetails-btn"
               onClick={this.toggleEventDetails}
             >
-              Show EventDetails
+              Show Event Details
             </button>
           ) : (
             <button
               className="event-hideDetails-btn"
               onClick={this.toggleEventDetails}
             >
-              Hide EventDetails 
+              Hide Event Details 
               </button>
           )}
         </div>

@@ -30,7 +30,6 @@ this.props.updateEvents(suggestion);
 
 
   render() {
-    console.log(this.state.suggestions)
     return (
       <div className="CitySearch">
         <a>See all cities</a>

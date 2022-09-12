@@ -3,6 +3,8 @@ import React from 'react';
 import App from '../App';
 import { mount, shallow } from 'enzyme';
 import { mockData } from '../mock-data';
+import EventList from '../EventList';
+//import Event from '../Event';
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
@@ -11,6 +13,8 @@ defineFeature(feature, (test) => {
     test('An event element is collapsed by default', ({ given, when, then }) => {
      
       given('the main page is open', () => {
+        //EventListWrapper = mount(<EventList events={250} />);
+        //EventWrapper = mount(<Event event={250[0]} />);
         AppWrapper = mount(<App />);
       });
   
@@ -48,7 +52,7 @@ defineFeature(feature, (test) => {
     
         then('more details about the event will display', () => {
             expect(EventWrapper.state('show')).toBe(true);
-            expect(EventWrapper.find('.event-hideDetails-btn')).toHaveLength(
+            expect(EventWrapper.find('.event-showDetails-btn')).toHaveLength(
               1
             );
             expect(EventWrapper.find('.event-description')).toHaveLength(1);
@@ -61,11 +65,12 @@ defineFeature(feature, (test) => {
         given('the event details are open',() => {
             EventWrapper = shallow(<Event event={mockData[0]} />);
             EventWrapper.setState({ show: true });
-            expect(EventWrapper.state('show')).toBe(true);
-            expect(EventWrapper.find('.event-hideDetails-btn')).toHaveLength(
+             expect(EventWrapper.state('show')).toBe(true);
+             expect(EventWrapper.find('.event-hideDetails-btn')).toHaveLength(
               1
             );
             expect(EventWrapper.find('.event-description')).toHaveLength(1);
+ 
           }
         );
 

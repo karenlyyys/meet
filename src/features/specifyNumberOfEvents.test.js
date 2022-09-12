@@ -6,12 +6,13 @@ import React from 'react';
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 defineFeature(feature, (test) => {
   test('When user has not specified a number, 32 is the default number', ({ given, when, then }) => {
+    let AppWrapper;
     given('the user searched for an event', () => {
     });
   
-      let AppWrapper;
+    AppWrapper = mount(<App />);
       when('the user chooses not to specify the number of events', () => {
-        AppWrapper = mount(<App />);
+       
       });
   
       then('the user will get 32 as a result', () => {
@@ -38,7 +39,9 @@ defineFeature(feature, (test) => {
       );
   
       then('they can select their desired default number', () => {
-          expect(NumberOfEventsWrapper.state('#render-number')).toBe(6);
+        expect(NumberOfEventsWrapper.find('#render-number')).toHaveLength(1);
+        //expect(AppWrapper.find('.EventItem')).toHaveLength(1);
+          //expect(NumberOfEventsWrapper.state('#render-number')).toBe(6);
         }
       );
     });
