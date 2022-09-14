@@ -38,6 +38,7 @@ render() {
         <div className="number-of-events">
             <p className="input-label">Number of Events</p>
             <ErrorAlert text={this.props.infoText} />
+            console.log(changeNumOfEvents)
             <input id="render-number" type="number" className="rendernumber" value={this.props.NumberOfEvents} onChange={(e) => this.props.changeNumOfEvents(e)}></input>
         </div>
     );
