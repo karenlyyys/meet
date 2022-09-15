@@ -26,9 +26,10 @@ defineFeature(feature, test => {
       });
   
     test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
-      let locations = extractLocations(mockData[0].items);
+
         given('the main page is open', () => {
-            CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} locations={locations} />);
+          let locations = extractLocations(mockData[0].items);
+          CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} locations={locations} evts={()=>mockData[0].items} />);
       });
       when('the user starts typing in the city textbox', () => {
         CitySearchWrapper.find('.city').simulate('change', { target: { value: 'Berlin' }})
