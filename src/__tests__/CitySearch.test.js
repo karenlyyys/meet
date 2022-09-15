@@ -5,17 +5,13 @@ import { mockData } from '../mock-data';
 import { extractLocations } from '../api';
 
 describe('<CitySearch /> component', () => {
-  let locations, CitySearchWrapper;
-  
-  beforeAll(() => {
-    locations = extractLocations(mockData[0].items);
-    CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
-  });
-
-
+ \
    //USER SHOULD SEE LIST OF SUGGESTIONS DURING SEARCH
 
   test('render text input', () => {
+    let locations = extractLocations(mockData[0].items);
+    let CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
+
     expect(CitySearchWrapper.find('.city')).toHaveLength(1);
   });
 
@@ -25,6 +21,9 @@ describe('<CitySearch /> component', () => {
   });
 
   test('change state when text input changes', () => {
+    let locations = extractLocations(mockData[0].items);
+    let CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
+
     CitySearchWrapper.setState({
       query: 'Berlin'
     });
@@ -34,6 +33,9 @@ describe('<CitySearch /> component', () => {
   });
 
   test('render list of suggestions correctly', () => {
+    let locations = extractLocations(mockData[0].items);
+    let CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
+
     CitySearchWrapper.setState({ suggestions: locations });
     const suggestions = CitySearchWrapper.state('suggestions');
     expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
@@ -43,6 +45,9 @@ describe('<CitySearch /> component', () => {
   });
 
   test('suggestion list match the query when changed', () => {
+    let locations = extractLocations(mockData[0].items);
+    let CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
+
   CitySearchWrapper.setState({ query: '', suggestions: [] });
   CitySearchWrapper.find(".city").simulate("change", {
     target: { value: "Berlin" },
@@ -58,6 +63,9 @@ describe('<CitySearch /> component', () => {
   //USER CAN SELECT CITY FROM LIST OF SUGGESTIONS
 
   test("selecting a suggestion should change query state", () => {
+    let locations = extractLocations(mockData[0].items);
+    let CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
+
     CitySearchWrapper.setState({
       query: 'Berlin'  });
     const suggestions = CitySearchWrapper.state('suggestions');
@@ -66,12 +74,18 @@ describe('<CitySearch /> component', () => {
   });
 
   test("selecting CitySearch input reveals the suggestions list", () => {
+    let locations = extractLocations(mockData[0].items);
+    let CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
+
     CitySearchWrapper.find('.city').simulate('focus');
     expect(CitySearchWrapper.state('showSuggestions')).toBe(true);
     expect(CitySearchWrapper.find('.suggestions').prop('style')).not.toEqual({ display: 'none' });
   });
 
   test("selecting a suggestion should hide the suggestions list", () => {
+    let locations = extractLocations(mockData[0].items);
+    let CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
+
     CitySearchWrapper.setState({
         query: 'Berlin',
         showSuggestions: undefined

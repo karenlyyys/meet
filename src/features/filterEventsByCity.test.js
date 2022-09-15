@@ -26,8 +26,7 @@ defineFeature(feature, test => {
       });
   
     test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
-        let CitySearchWrapper;
-        let locations = extractLocations(mockData[0].items);
+      let locations = extractLocations(mockData[0].items);
         given('the main page is open', () => {
             CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} locations={locations} />);
       });
