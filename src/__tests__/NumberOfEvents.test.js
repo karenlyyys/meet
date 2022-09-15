@@ -19,9 +19,9 @@ test('render display 32 by default', () => {
 
 test('render number of events according to user input', () => {
   NumberOfEventsWrapper.find('#render-number').simulate('change', {
-    target: { value: 18 },
+    target: { value: 32 },
   });
-  expect(NumberOfEventsWrapper.find('#render-number').prop('value')).toBe(18);
+  expect(NumberOfEventsWrapper.state('renderNumber')).toBe(32);
 });
 });
 

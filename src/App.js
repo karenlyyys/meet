@@ -79,7 +79,7 @@ changeNumOfEvents = async (e) => {
     return (
       <div className="App">
         <h1 className="app-title title">Welcome to the Events App!</h1>
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} events={this.state.events} />
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} evts={this.state.events} />
          <NumberOfEvents changeNumOfEvents={this.changeNumOfEvents} NumberOfEvents={this.state.numberOfEvents} infoText={this.state.infoText} />
          <EventList events={this.state.events} />
       </div>

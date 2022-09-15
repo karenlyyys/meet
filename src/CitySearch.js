@@ -4,7 +4,7 @@ import { extractLocations } from './api';
 class CitySearch extends Component {
   state = {
     query: '',
-    suggestions: extractLocations(this.props.events),
+    suggestions: extractLocations(this.props.evts),
     showSuggestions: undefined
   }
 
