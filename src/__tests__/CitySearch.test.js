@@ -5,7 +5,7 @@ import { mockData } from '../mock-data';
 import { extractLocations } from '../api';
 
 describe('<CitySearch /> component', () => {
- \
+ 
    //USER SHOULD SEE LIST OF SUGGESTIONS DURING SEARCH
 
   test('render text input', () => {
