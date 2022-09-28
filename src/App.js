@@ -43,6 +43,7 @@ componentDidMount() {
         locationSelected: location,
         numberofEvents: eventCount
       });
+  
     });
   }
 
