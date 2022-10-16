@@ -8,6 +8,7 @@ import './nprogress.css';
 import { mockData } from './mock-data';
 import { OfflineAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
+import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 
 
 class App extends Component {
@@ -107,7 +108,7 @@ changeNumOfEvents = async (e) => {
   }
       this.updateEvents(this.state.locationSelected, this.state.numberOfEvents);
 }
-
+//figure out chart stuff
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div
 className="App" />
@@ -117,6 +118,16 @@ className="App" />
         <OfflineAlert text={this.state.offlineText} />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} evts={this.state.events} />
          <NumberOfEvents changeNumOfEvents={this.changeNumOfEvents} NumberOfEvents={this.state.numberOfEvents} infoText={this.state.infoText} />
+         <ResponsiveContainer height={400}>
+            <ScatterChart
+              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis  allowDecimals={false} type="number" dataKey="number" name="number of events" />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
          <EventList events={this.state.events} />
          <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
 getAccessToken={() => { getAccessToken() }} />
