@@ -5,15 +5,17 @@
   "homepage": "https://karenlyyys.github.io/meet",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
+    "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
-    "atatus-spa": "^4.5.0",
+    "atatus-spa": "^4.4.1",
     "axios": "^0.27.2",
+    "bootstrap": "^5.1.3",
     "nprogress": "^0.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.1.0",
+    "react-bootstrap": "^2.4.0",
+    "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "recharts": "^2.1.14",
+    "recharts": "^2.1.12",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.5.3",
     "workbox-broadcast-update": "^6.5.3",
@@ -59,6 +61,6 @@
     "enzyme": "^3.11.0",
     "gh-pages": "^4.0.0",
     "jest-cucumber": "^3.0.1",
-    "puppeteer": "^16.2.0"
+    "puppeteer": "^14.4.0"
   }
 }

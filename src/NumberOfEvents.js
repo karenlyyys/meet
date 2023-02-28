@@ -2,46 +2,43 @@ import React, { Component } from 'react';
 import { ErrorAlert } from './Alert';
 
 class NumberOfEvents extends Component {
-    // handleInputChanged = (event) => {
-    //     // let actValue = parseInt(event.target.value)
-    //     // if (actValue > 0 && actValue <= 32) {
-    //     //     this.setState({ 
-    //     //         numberOfEvents: actValue,
-    //     //         errorText: ' '
-    //     //      });
-    // //}
-    //          if (event.target.value < 1 || event.target.value > 32) {
-    //         this.setState({
-    //             renderNumber: event.target.value,
-    //             errorText: 'Please enter a number between 1 and 32'
-    //         })
-    //     } else {
-    //         this.props.updateEvents(undefined, event.target.value);
-    //         this.setState({
-    //             renderNumber: event.target.value,
-    //             errorText: '' 
-    //         });
-    //     }
-    // }
-
-constructor() {
+  constructor() {
     super();
     this.state = {
-        renderNumber: 32,
-    }
-}
+      numberOfEvents: 32,
+    };
+  }
 
-render() {
-    const { renderNumber } = this.state;
-   
+  updateNumberOfEvents = (event) => {
+    let newValue = parseInt(event.target.value);
+    if (newValue > 33 || newValue < 1) {
+      this.setState({
+        numberOfEvents: newValue,
+        infoText: 'Please choose a number between 1 and 32',
+      });
+    } else {
+      this.setState({
+        numberOfEvents: newValue,
+        infoText: ' ',
+      });
+    }
+    this.props.updateNumberOfEvents(newValue);
+  };
+
+  render() {
     return (
-        <div className="number-of-events">
-            <p className="input-label">Number of Events</p>
-            <ErrorAlert text={this.props.infoText} />
-            <input id="render-number" type="number" className="rendernumber" value={this.props.NumberOfEvents} onChange={(e) => this.props.changeNumOfEvents(e)}></input>
-        </div>
+      <div className="NumberOfEvents row">
+        <label className="numbercount">Number of events: </label>
+        <input
+          type="number"
+          className="numberinput"
+          onChange={this.updateNumberOfEvents}
+          value={this.state.numberOfEvents}
+        />
+        <ErrorAlert text={this.state.infoText} />
+      </div>
     );
-}
+  }
 }
 
 export default NumberOfEvents;

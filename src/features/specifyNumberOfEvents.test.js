@@ -1,48 +1,55 @@
-import { mount } from 'enzyme';
 import { loadFeature, defineFeature } from 'jest-cucumber';
-import App from '../App';
 import React from 'react';
+import { mount } from 'enzyme';
+import App from '../App';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
+
 defineFeature(feature, (test) => {
-  test('When user has not specified a number, 32 is the default number', ({ given, when, then }) => {
+  test("When user hasn't specified a number, 32 is the default number.", ({
+    given,
+    when,
+    then,
+  }) => {
     let AppWrapper;
-    given('the user searched for an event', () => {
+
+    given('the user is on the main page of the app', () => {
+      AppWrapper = mount(<App />);
     });
-  
-    AppWrapper = mount(<App />);
-      when('the user chooses not to specify the number of events', () => {
-       
-      });
-  
-      then('the user will get 32 as a result', () => {
-        AppWrapper.update();
-        expect(AppWrapper.state('numberOfEvents')).toBe(32);
-      });
+
+    when("the user hasn't specified a number of events", () => {
+      AppWrapper.update();
     });
- 
-    test('User can change the number of events they want to see', ({given, when, then}) => {
-      let AppWrapper = mount(<App/>);
-      let NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');
-      given('the user is in the search query', () => {
-        AppWrapper = mount(<App />);
-      });
-  
-      when('the user wants to change the search number', () => {
-          AppWrapper.update();
-         
-          const eventObject = { target: { value: 6 } };
-          NumberOfEventsWrapper.find('#render-number').simulate( 'click',
-            eventObject
-          );
-        }
-      );
-  
-      then('they can select their desired default number', () => {
-        expect(NumberOfEventsWrapper.find('#render-number')).toHaveLength(1);
-        //expect(AppWrapper.find('.EventItem')).toHaveLength(1);
-          //expect(NumberOfEventsWrapper.state('#render-number')).toBe(6);
-        }
-      );
+
+    then('the default number of displayed events will be 32', () => {
+      expect(AppWrapper.find('.event')).toHaveLength(2);
     });
   });
+
+  test('User can change the number of events they want to see.', ({
+    given,
+    when,
+    then,
+  }) => {
+    let AppWrapper;
+
+    given('the user is on the main page', () => {
+      AppWrapper = mount(<App />);
+    });
+
+    when(
+      'the user set a number of events he or she wants to see in the “Number of events” box',
+      () => {
+        AppWrapper.update();
+        AppWrapper.find('.numberinput').simulate('change', {
+          target: { value: '0' },
+        });
+      }
+    );
+
+    then('this number of events will be displayed', () => {
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(0);
+    });
+  });
+});

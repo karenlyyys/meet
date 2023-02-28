@@ -1,9 +1,11 @@
-Feature: Specify Number of Events 
-Scenario: When user has not specified a number, 32 is the default number
-Given the user searched for an event
-When the user chooses not to specify the number of events
-Then the user will get 32 as a result
-Scenario: User can change the number of events they want to see
-Given the user is in the search query
-When the user wants to change the search number
-Then they can select their desired default number
+Feature: SPECIFY NUMBER OF EVENTS
+
+Scenario: When user hasn't specified a number, 32 is the default number.
+    Given the user is on the main page of the app
+    When the user hasn't specified a number of events
+    Then the default number of displayed events will be 32
+
+Scenario: User can change the number of events they want to see.
+    Given the user is on the main page
+    When the user set a number of events he or she wants to see in the “Number of events” box
+    Then this number of events will be displayed

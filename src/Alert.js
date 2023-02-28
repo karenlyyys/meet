@@ -1,52 +1,44 @@
 import React, { Component } from 'react';
 
 class Alert extends Component {
-    constructor(props) {
-      super(props);
-      this.color = null;
-      this.class = 'alert'
-    }
+  constructor(props) {
+    super(props);
+    // the children will override this later
+    this.color = null;
+  }
 
-    getStyle = () => {
-        return {
-          color: this.color
-        };
-      };
-    
-      getClass = () => {
-        return this.class;
-      };
+  getStyle = () => {
+    return {
+      color: this.color,
+    };
+  };
 
-render() {
+  render() {
     return (
-        <div className={`alert ${this.getClass()}`}>
-            <p style={this.getStyle()}>{this.props.text}</p>
-        </div>
+      <div className="Alert">
+        <p style={this.getStyle()}>{this.props.text}</p>
+      </div>
     );
+  }
 }
+
+export class InfoAlert extends Alert {
+  constructor(props) {
+    super(props);
+    this.color = 'blue';
+  }
 }
 
-class ErrorAlert extends Alert {
-    constructor(props) {
-      super(props);
-      this.color = 'red';
-      this.class = 'error-alert';
-    }
+export class ErrorAlert extends Alert {
+  constructor(props) {
+    super(props);
+    this.color = 'red';
   }
+}
 
-  class InfoAlert extends Alert {
-    constructor(props) {
-      super(props);
-      this.color = 'blue';
-    }
+export class OfflineAlert extends Alert {
+  constructor(props) {
+    super(props);
+    this.color = '#FFFF00';
   }
-  
-  class OfflineAlert extends Alert {
-    constructor(props) {
-      super(props);
-      this.color = 'yellow';
-    }
-  }
-  
-
-  export { ErrorAlert, InfoAlert, OfflineAlert };
+}

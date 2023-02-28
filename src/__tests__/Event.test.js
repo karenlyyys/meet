@@ -4,73 +4,40 @@ import Event from '../Event';
 import { mockData } from '../mock-data';
 
 describe('<Event /> component', () => {
-  let event, EventWrapper;
-  beforeEach(() => {
-    event = mockData[0].items[0];
-    EventWrapper = shallow(<Event event={event} />);
+  let EventWrapper;
+  beforeAll(() => {
+    EventWrapper = shallow(<Event event={mockData[1]} />);
   });
 
-  test('render title in event item', () => {
-    expect(EventWrapper.find('.event-summary-title')).toHaveLength(1);
+  test('render an event', () => {
+    expect(EventWrapper.find('.event')).toHaveLength(1);
   });
 
-  test('render info in event item', () => {
-    expect(EventWrapper.find('.event-date')).toHaveLength(1);
+  test('render location', () => {
+    expect(EventWrapper.find('.location')).toHaveLength(1);
   });
 
-  test('render show details button in event item', () => {
-    expect(EventWrapper.find('.event-showDetails-btn')).toHaveLength(1);
+  test('render start time', () => {
+    expect(EventWrapper.find('.start-date')).toHaveLength(1);
   });
 
-  test('render event title correctly', () => {
-    expect(EventWrapper.find('.event-summary-title').text()).toBe(
-      event.summary
-    );
+  test('render details button', () => {
+    expect(EventWrapper.find('.show-details')).toHaveLength(1);
   });
 
-  test('render event info correctly', () => {
-    expect(EventWrapper.find('.event-date').text()).toContain(
-      '2020-05-19'
-    );
-    expect(EventWrapper.find('.event-location').text()).toContain(
-      'London'
-    );
-  });
-
-  test('render event collapsed by default', () => {
-    expect(EventWrapper.state('show')).toBe(false);
-  });
-
-  test('render click to expand event details', () => {
+  test('open details panel with details button click', () => {
     EventWrapper.setState({
-      show: false
+      collapsed: true,
     });
-    EventWrapper.find('.event-showDetails-btn').simulate('click');
-    expect(EventWrapper.state('show')).toBe(true);
+    EventWrapper.find('.show-details').simulate('click');
+    expect(EventWrapper.state('collapsed')).toBe(false);
   });
 
-  test('render when event is collapsed after click expand event details', () => {
+  test('hide details panel with details button click', () => {
     EventWrapper.setState({
-      show: true
+      collapsed: false,
     });
-    expect(EventWrapper.find('.event-description').text()).toContain(
-      event.description
-    );
-    expect(EventWrapper.find('.event-hideDetails-btn')).toHaveLength(1);
-  });
-
-  test('render click to collapse event details', () => {
-    EventWrapper.setState({
-      show: true
-    });
-    EventWrapper.find('.event-hideDetails-btn').simulate('click');
-    expect(EventWrapper.state('show')).toBe(false);
-  });
-
-  test('render when event is expanded after click collapse event details', () => {
-    EventWrapper.setState({
-      show: false
-    });
-    expect(EventWrapper.find('.event-description')).toHaveLength(0);
+    EventWrapper.find('.hide-details').simulate('click');
+    expect(EventWrapper.state('collapsed')).toBe(true);
   });
 });

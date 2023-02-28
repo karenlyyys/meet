@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
-  text-align: center;
+  /* text-align: center; */
   padding: 2% 5%;
 }
 
@@ -24,8 +24,8 @@ p {
   display: block;
 }
 
-input[type="text"],
-input[type="number"] {
+input[type='text'],
+input[type='number'] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
@@ -40,22 +40,12 @@ input[type="number"] {
   width: 250px;
 }
 
-.CitySearch {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 300px;
-  max-width: 300px;
-  margin: auto;
-  position: relative;
-}
-
 .suggestions {
   width: 250px;
   position: absolute;
   z-index: 2;
   align-self: center;
   margin: 0;
-  top: 65px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -195,10 +185,8 @@ input[type="number"] {
   color: #fff;
   font-size: 14px;
   letter-spacing: 0.2px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
-
-
 
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
@@ -210,4 +198,25 @@ input[type="number"] {
     min-width: auto;
     margin: 0 auto;
   }
+}
+
+/* CitySearch */
+.row {
+  display: inline-block;
+  margin-right: 20px;
+  height: 100%;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  display: inline-block;
+  text-align: left;
+}
+
+.meet-title {
+  font-size: 35px;
+  font-weight: bolder;
 }
