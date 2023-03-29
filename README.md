@@ -1,7 +1,7 @@
 # meet
 
 # FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS 
-Scenario 1: An event element is collapsed by default
+<p>Scenario 1: An event element is collapsed by default <br>
 Given the main page is open, when the user views the city, then the current events will be collapsed from the viewer's end. 
 Scenario 2: User can expand an event to see its details
 Given the user clicked on the event button/page, when the user clicks on an event, then more details about the event will display.
