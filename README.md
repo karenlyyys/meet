@@ -1,19 +1,12 @@
 # meet
 
 # FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS 
-
 Scenario 1: An event element is collapsed by default
-
 Given the main page is open, when the user views the city, then the current events will be collapsed from the viewer's end. 
-
 Scenario 2: User can expand an event to see its details
-
 Given the user clicked on the event button/page, when the user clicks on an event, then more details about the event will display.
-
 Scenario 3: User can collapse an event to hide its details
-
 Given the event details are open, when the user clicks on the event again, then the details about the event will close. 
-
 User Story: As a user, I should be able to view the events or hide them so that I can easily access the options that are available in the city.
 
 
