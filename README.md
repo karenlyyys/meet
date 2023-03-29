@@ -1,7 +1,6 @@
 # meet
 
 # FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS 
-
 Scenario 1: An event element is collapsed by default
 
 Given the main page is open, when the user views the city, then the current events will be collapsed from the viewer's end. 
